@@ -121,7 +121,7 @@ def get_kbs_newslist(date, kbs_program_url, driver, session):
     # make initial list
     kbs_base_url = "https://news.kbs.co.kr"
     kbs_boxlist = []
-    for item in kbs_news_items:
+    for item in kbs_items:
         title = item.find('p', class_='title').get_text(strip=True) if item.find('p', class_='title') else "N/A"
         relative_link = item.get('href')
         full_link = urljoin(kbs_base_url, relative_link)
@@ -151,7 +151,6 @@ def get_kbs_newslist(date, kbs_program_url, driver, session):
         news = get_kbsnews(kbs_newslist[i]['url'], session)
         kbs_newslist[i]['news'] = news
 
-kbs_newslist
 
 
 # In[34]:
@@ -204,11 +203,6 @@ def get_mbcnewslist(date, mbc_program_url, driver, session):
         mbc_newslist[i]['order'] = i + 1
 
     return mbc_newslist
-
-mbc_newslist
-
-
-# In[115]:
 
 
 def get_sbsnews(url, session):
